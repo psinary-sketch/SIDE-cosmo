@@ -26,7 +26,7 @@ with the dark sector theorem and the prediction Ω_b = 4/81.
 
 ## Status
 
-- 20 theorems total
+- 23 theorems total
 - 0 sorry
 - 0 axioms (beyond ZFC)
 - Compiled against Mathlib v4.30.0

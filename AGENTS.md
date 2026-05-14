@@ -12,13 +12,13 @@ This file orients LLM agents and automated tooling to the repository's purpose, 
 
 ## What this repository is
 
-The Lean 4 kernel extending the SIDE framework to cosmological scale. **23 theorems, 0 sorry, 0 axioms beyond ZFC, compiled against Mathlib v4.30.0.** Three substantive modules:
+The Lean 4 kernel extending the SIDE framework to cosmological scale. 0 sorry, 0 axioms beyond ZFC, compiled against Mathlib v4.30.0. Three substantive modules:
 
-1. **Formation phase space** (`FormationPhaseSpace.lean`, 14 theorems) — the dark sector theorem (`prim < trans → dark > 0`), silence at the formation boundary, **Wall² identity** (`prim = output → total = wall²`), the **Ω_b = 4/81 = 0.04938** prediction machine-verified for the (2, 3, 2, 0) ξ-system tuple, Dark = 77 = 7 × 11, formation total = 7, and propositional-logic decidability infrastructure.
+1. **Formation phase space** (`FormationPhaseSpace.lean`) — the dark sector theorem (`prim < trans → dark > 0`), silence at the formation boundary, **Wall² identity** (`prim = output → total = wall²`), the **Ω_b = 4/81 = 0.04938** prediction machine-verified for the (2, 3, 2, 0) ξ-system tuple, Dark = 77 = 7 × 11, formation total = 7, and propositional-logic decidability infrastructure.
 
-2. **Fano plane PG(2, 𝔽₂)** (`FanoPlane.lean`, 6 theorems) — three lines through every point, unique pairwise line intersection, three distinct points per line, **formation total = Fano point count** (2 + 3 + 2 + 0 = 7), **|GL(3, 𝔽₂)| = 168 = 24 × 7**, and characteristic 2 `(1 + 1 : Fin 2) = 0`.
+2. **Fano plane PG(2, 𝔽₂)** (`FanoPlane.lean`) — three lines through every point, unique pairwise line intersection, three distinct points per line, **formation total = Fano point count** (2 + 3 + 2 + 0 = 7), **|GL(3, 𝔽₂)| = 168 = 24 × 7**, and characteristic 2 `(1 + 1 : Fin 2) = 0`.
 
-3. **Formation-Fano bridge** (`FanoFormation.lean`, 9 theorems) — `xi_total_eq_fano`, `coupled_symm` (coupling is symmetric), `coupling_count` (each mechanism class couples to exactly 6 others via shared Fano lines), `block_length`, `visible_dim`, `dark_dim`, `formation_rate` (2² = visible_slots), and `block_match_steane`.
+3. **Formation-Fano bridge** (`FanoFormation.lean`) — `xi_total_eq_fano`, `coupled_symm` (coupling is symmetric), `coupling_count` (each mechanism class couples to exactly 6 others via shared Fano lines), `block_length`, `visible_dim`, `dark_dim`, `formation_rate` (2² = visible_slots), and `block_match_steane`.
 
 Cosmology meets arithmetic at the Fano plane. The (ℤ/2)³ generators {−1, 2, 3} that produce the seven mechanism classes (SIDE-trivium) are the same generators that organize cosmological matter content into the visible-dark partition with the Class A prediction Ω_b = 4/81. Class A predicts 0.04938; Planck 2018 measures 0.04930 ± 0.00059; deviation 0.13σ. Classes B (Gravitational), C (Gauge), D (Information) excluded by 18.6σ to 351σ.
 
@@ -56,7 +56,7 @@ The headline `Ω_b = 4/81` claim is verifiable by inspecting `SIDECosmo/Formatio
 
 ## Theorems exported (v0.3)
 
-### `SIDECosmo/FormationPhaseSpace.lean` (14 theorems)
+### `SIDECosmo/FormationPhaseSpace.lean`
 
 The dark-sector layer. Builds the formation tuple structure, defines `visible_slots` and `dark_slots`, and proves the central cosmological identities:
 
@@ -68,7 +68,7 @@ The dark-sector layer. Builds the formation tuple structure, defines `visible_sl
 - **Formation total = 7** — for the (2, 3, 2, 0) tuple specifically
 - **Decidability instances** for the propositional layer
 
-### `SIDECosmo/FanoPlane.lean` (6 theorems)
+### `SIDECosmo/FanoPlane.lean`
 
 Self-contained formalization of PG(2, 𝔽₂). Defines `fanoLine : Fin 7 → Fin 7 × Fin 7 × Fin 7`, `onLine`, `linesThrough`, `sharedPoints`. All theorems via `native_decide`:
 
@@ -79,7 +79,7 @@ Self-contained formalization of PG(2, 𝔽₂). Defines `fanoLine : Fin 7 → Fi
 - **`gl3f2`** — `168 = 24 × 7`; the Fano automorphism group order
 - **`char_two`** — `(1 + 1 : Fin 2) = 0`; characteristic 2 / orientation reversal
 
-### `SIDECosmo/FanoFormation.lean` (9 theorems)
+### `SIDECosmo/FanoFormation.lean`
 
 Bridge module connecting Fano structure to formation calculus. Defines `coupled : Fin 7 → Fin 7 → Bool` via shared Fano lines:
 
@@ -143,7 +143,7 @@ The cosmological cluster is the first batch-wave anticipated for Phase 2 publica
 
 1. **Federation respect.** No cross-kernel Lake dependencies. The Fano formalization in SIDE-cosmo is independent of any Fano content elsewhere in the federation.
 
-2. **0 sorry, 0 axioms beyond ZFC.** All 23 theorems compile unconditionally. Any PR that introduces sorries or custom axioms breaks the kernel's distinguishing property.
+2. **0 sorry, 0 axioms beyond ZFC.** All theorems compile unconditionally. Any PR that introduces sorries or custom axioms breaks the kernel's distinguishing property.
 
 3. **`native_decide` discipline.** Most v0.3 theorems are `by native_decide` against `Fin 7` and small finite structures. This is appropriate for the structural-identity layer. PRs that replace `native_decide` with `decide` or manual proof should preserve the verification status.
 
@@ -161,7 +161,7 @@ The cosmological cluster is the first batch-wave anticipated for Phase 2 publica
 
 ## Honest open status
 
-- All 23 theorems compile, 0 sorry, 0 axioms beyond ZFC.
+- All theorems compile, 0 sorry, 0 axioms beyond ZFC.
 - Wall² identity is kernel-verified (stronger than the manuscript-level absorption noted in v0.2 of the cosmology papers).
 - Coupling structure (each class couples to 6 others) is a structural finding not yet reflected in manuscript-side papers; worth surfacing in Phase 2 polish.
 - `[[7,2,5]]` code parameter framing in the v0.3 commit message describes cosmological-side rate/distance parameters on the Fano substrate; the relationship to Steane [[7, 1, 3]] in SIDE-trivium is shared block-length-via-Fano, not a rebranding.

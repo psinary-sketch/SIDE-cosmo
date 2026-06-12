@@ -56,15 +56,15 @@ def ym : FormationTuple := ⟨3, 3, 2, 0, by omega⟩
 def prop_logic : FormationTuple := ⟨2, 1, 2, 0, by omega⟩
 
 -- Computations for xi = (2,3,2,0)
-theorem xi_total : total_slots xi = 81 := by native_decide
-theorem xi_visible : visible_slots xi = 4 := by native_decide
-theorem xi_dark : dark_slots xi = 77 := by native_decide
-theorem xi_balanced : xi.prim = xi.output := by native_decide
+theorem xi_total : total_slots xi = 81 := by decide
+theorem xi_visible : visible_slots xi = 4 := by decide
+theorem xi_dark : dark_slots xi = 77 := by decide
+theorem xi_balanced : xi.prim = xi.output := by decide
 theorem xi_wall_sq : total_slots xi = (stormer_wall xi) ^ 2 :=
   wall_squared xi xi_balanced
-theorem xi_form_total : xi.formation_total = 7 := by native_decide
-theorem xi_77 : dark_slots xi = 7 * 11 := by native_decide
+theorem xi_form_total : xi.formation_total = 7 := by decide
+theorem xi_77 : dark_slots xi = 7 * 11 := by decide
 
 -- Propositional logic is decidable: visible ≥ total
 theorem prop_dec : total_slots prop_logic ≤ visible_slots prop_logic := by
-  native_decide
+  decide

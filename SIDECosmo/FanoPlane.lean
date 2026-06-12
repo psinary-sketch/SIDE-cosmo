@@ -31,10 +31,10 @@ def sharedPoints (i j : Fin 7) : Nat :=
   b2n (onLine 4 i && onLine 4 j) + b2n (onLine 5 i && onLine 5 j) +
   b2n (onLine 6 i && onLine 6 j)
 
-theorem three_lines_per_point : ∀ pt : Fin 7, linesThrough pt = 3 := by native_decide
-theorem unique_intersection : ∀ i j : Fin 7, i ≠ j → sharedPoints i j = 1 := by native_decide
+theorem three_lines_per_point : ∀ pt : Fin 7, linesThrough pt = 3 := by decide
+theorem unique_intersection : ∀ i j : Fin 7, i ≠ j → sharedPoints i j = 1 := by decide
 theorem three_distinct : ∀ i : Fin 7,
-    let (a, b, c) := fanoLine i; a ≠ b ∧ a ≠ c ∧ b ≠ c := by native_decide
-theorem formation_is_fano : 2 + 3 + 2 + 0 = 7 := by native_decide
-theorem gl3f2 : 168 = 24 * 7 := by native_decide
-theorem char_two : (1 + 1 : Fin 2) = 0 := by native_decide
+    let (a, b, c) := fanoLine i; a ≠ b ∧ a ≠ c ∧ b ≠ c := by decide
+theorem formation_is_fano : 2 + 3 + 2 + 0 = 7 := by decide
+theorem gl3f2 : 168 = 24 * 7 := by decide
+theorem char_two : (1 + 1 : Fin 2) = 0 := by decide

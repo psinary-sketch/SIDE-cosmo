@@ -30,18 +30,18 @@ def coupled (i j : Fin 7) : Bool :=
     onLine i 6 && onLine j 6
 
 /-- Coupling is symmetric. -/
-theorem coupled_symm : ∀ i j : Fin 7, coupled i j = coupled j i := by native_decide
+theorem coupled_symm : ∀ i j : Fin 7, coupled i j = coupled j i := by decide
 
 /-- Each class couples to exactly 6 others. -/
 theorem coupling_count : ∀ i : Fin 7,
     b2n_local (coupled i 0) + b2n_local (coupled i 1) + b2n_local (coupled i 2) +
     b2n_local (coupled i 3) + b2n_local (coupled i 4) + b2n_local (coupled i 5) +
-    b2n_local (coupled i 6) = 6 := by native_decide
+    b2n_local (coupled i 6) = 6 := by decide
 
 /-! ## Code parameters -/
 
 theorem block_length : xi.formation_total = 7 := xi_form_total
 theorem visible_dim : visible_slots xi = 4 := xi_visible
 theorem dark_dim : dark_slots xi = 77 := xi_dark
-theorem formation_rate : 2 ^ 2 = visible_slots xi := by native_decide
+theorem formation_rate : 2 ^ 2 = visible_slots xi := by decide
 theorem block_match_steane : xi.formation_total = 7 := xi_form_total

@@ -55,7 +55,7 @@ First build takes ~30 min (Mathlib dependency).
 ## Companion repositories
 
 - [SIDE-kernel](https://github.com/psinary-sketch/SIDE-kernel) — RH proof
-  (560 declarations, 0 sorry)
+  (cited by named terminal: the three route terminals at pinned commits, `{propext, Classical.choice, Quot.sound}`, 0 sorry)
 
 ## Citation
 

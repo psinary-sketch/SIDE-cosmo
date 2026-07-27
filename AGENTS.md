@@ -50,7 +50,7 @@ lake build
 
 Toolchain pinned in `lean-toolchain`. Mathlib v4.30.0.
 
-The headline `Ω_b = 4/81` claim is verifiable by inspecting `SIDECosmo/FormationPhaseSpace.lean` — the prediction is `native_decide`-verified for the (2, 3, 2, 0) tuple, no axiom invocation beyond ZFC.
+The headline `Ω_b = 4/81` claim is verifiable by inspecting `SIDECosmo/FormationPhaseSpace.lean` — the prediction is **`decide`-verified** for the (2, 3, 2, 0) tuple: `#print axioms` gives **`{propext, Quot.sound}`** (no `native_decide`, no `Classical.choice` — verified at source 2026-07-27; the `native_decide` in `FormationPhaseSpace.lean.txt` is a SUPERSEDED backup, the active `.lean` uses `decide`). The "no axiom beyond ZFC" claim holds honestly.
 
 ---
 

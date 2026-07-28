@@ -1,3 +1,4 @@
 import SIDECosmo.FormationPhaseSpace
 import SIDECosmo.FanoPlane
 import SIDECosmo.FanoFormation
+import SIDECosmo.SteaneExemplar

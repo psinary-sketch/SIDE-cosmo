@@ -21,7 +21,6 @@ xi_77
 prop_dec
 fanoLine
 onLine
-b2n
 linesThrough
 sharedPoints
 three_lines_per_point

@@ -6,7 +6,8 @@ set_option linter.style.nativeDecide false
 /-! # Bridge: Formation ↔ Fano
   J. York Seale | ORCID: 0009-0008-7993-0310 -/
 
-/-! ## Identification: Formation total = Fano points -/
+/-! ## The formation total of ξ is 7, the size of the Fano point index Fin 7 (the identification is the reading;
+formation_fano_match's second conjunct is True). -/
 
 theorem xi_total_eq_fano : xi.formation_total = 7 := xi_form_total
 

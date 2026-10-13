@@ -7,18 +7,14 @@ set_option linter.style.nativeDecide false
 
   M-4A, the Method Program (Program Five). J. York Seale | ORCID: 0009-0008-7993-0310
 
-  This file is **Engine 1** (the certification core, THE_METHOD_CANON.md §I): the
-  [[7,1,3]] code parameters n, k, d certified from the Fano / formation substrate
-  already compiled in this project (`FormationPhaseSpace.lean`, `FanoPlane.lean`,
-  `FanoFormation.lean`). Every proof is `by decide` or definitional — axioms
-  **{propext, Quot.sound}**, *cleaner* than the standard three axioms
-  {propext, Classical.choice, Quot.sound} (no Classical.choice).
+  This file compiles, on the parity check H (columns the seven nonzero vectors of 𝔽₂³), that its columns are nonzero
+  and pairwise distinct and that columns 0, 1, 3 sum to zero, and from the (2,3,2,0) tuple that the formation total is
+  7 and 2·4 − 7 = 1; read as the Steane code these give n = 7, k = 1, d = 3 — the code, its distance and
+  Knill–Laflamme correctability are not defined here, and the axiom profile is printed by SteaneAxiomCheck.lean.
 
   What was already compiled: n = 7 (block = formation total, `xi_form_total`),
   k_classical = 4 (`xi_visible`, = 2²), the Fano incidence geometry (the Hamming
-  parity-check structure). What this file adds — the parameters `block_match_steane`
-  only re-asserted: the **distance d = 3** and the **logical dimension k = 1**,
-  and the Knill–Laflamme correctability that d = 3 means.
+  parity-check structure).
 -/
 
 /-- 𝔽₂³ — the syndrome space of the Hamming/Steane parity check. -/
@@ -57,27 +53,25 @@ theorem syndrome_nonzero : ∀ i : Fin 7, H i ≠ 0 := by decide
 /-- Distinct single-qubit errors carry **distinct** syndromes (`H` injective). -/
 theorem syndrome_injective : Function.Injective H := by decide
 
-/-- **d ≥ 3**: no two columns sum to zero, so there is no weight-≤2 relation —
-    equivalently (char 2: `H i + H j = 0 ↔ H i = H j`) all weight-1 syndromes are
-    distinct and nonzero. No single- or double-column syndrome collision. -/
+/-- **No double-column collision**: no two distinct columns of H sum to zero (in characteristic 2, the columns are
+pairwise distinct); with syndrome_nonzero there is no weight-≤2 relation, so d ≥ 3. -/
 theorem distance_ge_three : ∀ i j : Fin 7, i ≠ j → H i + H j ≠ 0 := by decide
 
-/-- **d ≤ 3**: a weight-3 zero-sum relation exists — the Fano line {0,1,3}
-    (`fanoLine 0`). Together with `distance_ge_three` this pins the code
-    **distance to exactly 3**. -/
+/-- **d ≤ 3**: columns 0, 1, 3 (the Fano line fanoLine 0) sum to zero; with distance_ge_three and syndrome_nonzero, the
+classical code with parity check H has minimum distance exactly 3 (the code is the reading, not defined here). -/
 theorem distance_eq_three_witness : H 0 + H 1 + H 3 = 0 := by decide
 
 /-! ## Knill–Laflamme correctability -/
 
-/-- The Knill–Laflamme condition, specialized to the CSS / stabilizer setting: the
-    code corrects **every** weight-≤1 Pauli error iff all weight-1 error syndromes
-    are distinct and nonzero — exactly `syndrome_injective ∧ syndrome_nonzero`.
-    Hence the [[7,1,3]] code corrects any single-qubit error (t = 1 = ⌊(d−1)/2⌋). -/
+/-- The single-error syndrome condition: the columns of H are pairwise distinct and nonzero (syndrome_injective ∧
+syndrome_nonzero); by the Knill–Laflamme condition in the CSS setting (not compiled here) this is what correcting
+every single-qubit error requires. -/
 theorem knill_laflamme_t1 :
     Function.Injective H ∧ (∀ i : Fin 7, H i ≠ 0) :=
   ⟨syndrome_injective, syndrome_nonzero⟩
 
-/-- The full parameter tuple, certified: **[[7, 1, 3]]**. -/
+/-- The parameter conjunction read as [[7, 1, 3]]: formation total 7, 2·4 − 7 = 1, pairwise-distinct columns of H, and a
+weight-3 zero sum of columns 0, 1, 3 (d ≥ 3 also needs syndrome_nonzero). -/
 theorem steane_parameters :
     xi.formation_total = 7 ∧
     2 * visible_slots xi - xi.formation_total = 1 ∧
